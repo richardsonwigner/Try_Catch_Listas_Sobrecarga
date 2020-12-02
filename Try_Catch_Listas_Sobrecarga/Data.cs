@@ -45,11 +45,56 @@ namespace Try_Catch_Listas_Sobrecarga
         {          
             Console.WriteLine(DateTime.Today.ToString());
         }
-        public List<Data> DatasAdicionadas(List<Data> datas)
+        public void DatasAdicionadas(List<Data> datas)
         {
-            return datas.Where(x => x.Contains(datas)).ToList();
+            datas.ForEach(data => Console.WriteLine(data.ToString()));
+            Console.WriteLine("Deseja Escolher Uma data?\n1:Sim\n2:Não");
+            int EscolhaUsuario = int.Parse(Console.ReadLine());
+            if (EscolhaUsuario == 1)
+            {
+                EscolherData();
+            }
+            else if(EscolhaUsuario == 2)
+            {
+                Program.PedirUsuario();
+            }
         }
-
-      
+        public void EscolherData()
+        {
+            Console.WriteLine("Escolha Um dia");
+            int diaEscolhido = int.Parse(Console.ReadLine());
+            Console.WriteLine("1:Aumentar um dia\n2:Diminuir um Dia\n");
+            int OperacaoEscolhida = int.Parse(Console.ReadLine());
+            if (OperacaoEscolhida == 1)
+            {
+                AumentarUmDia(diaEscolhido);
+                Program.PedirUsuario();
+            }
+            if (OperacaoEscolhida == 2)
+            {
+                DiminuirUmDia(diaEscolhido);
+                Program.PedirUsuario();
+            }
+        }
+        public void AumentarUmDia(int diaEscolhido)
+        {
+            foreach(Data i in datas)
+                if(i.dia == diaEscolhido)
+                {
+                   i.dia += 1;                
+                }
+        }
+        public void DiminuirUmDia(int diaEscolhido)
+        {
+            foreach (Data i in Datas)
+                if (i.dia == diaEscolhido)
+                {
+                    i.dia -= 1;                  
+                }
+        }
+        public override string ToString()
+        {
+            return $"{dia}/{mes}/{ano}";
+        }           
     }
 }

@@ -4,7 +4,7 @@ namespace Try_Catch_Listas_Sobrecarga
 {
     class Program
     {
-        static Data diaAtual = new Data();
+        static Data dia = new Data();
         static void Main(string[] args)
         {
             PedirUsuario();
@@ -12,10 +12,8 @@ namespace Try_Catch_Listas_Sobrecarga
         }
         public static void PedirUsuario()
         {
-            Console.WriteLine(@$"O que deseja fazer?
-            1:Ver Data Atual
-            2:Adicionar Data");
-            if(diaAtual.Datas.Count != 0)
+            Console.WriteLine("O que deseja fazer?\n1:Ver Data Atual\n2:Adicionar Data");
+            if(dia.Datas.Count != 0)
             {
                 Console.WriteLine("3:Ver Datas Adicionadas");
             }
@@ -30,7 +28,8 @@ namespace Try_Catch_Listas_Sobrecarga
             }
             else if (PedidoUsuario == "3")
             {
-                Data.DatasAdicionadas();
+                dia.DatasAdicionadas(dia.Datas);
+                PedirUsuario();
             }
         }
         public static void AdicionarData()
@@ -46,8 +45,18 @@ namespace Try_Catch_Listas_Sobrecarga
                     int Mes = int.Parse(Console.ReadLine());
                     Console.WriteLine("Adicione o ano");
                     int Ano = int.Parse(Console.ReadLine());
-                    diaAtual.Datas.Add(new Data(Dia, Mes, Ano));
-                    Loop = false;
+                    dia.Datas.Add(new Data(Dia, Mes, Ano));
+                    Console.WriteLine("Deseja adicionar mais uma data?\n1:Sim\n2:Não");                  
+                    string EscolhaUsuario = Console.ReadLine();
+                    if  (EscolhaUsuario == "1")
+                    {
+                        AdicionarData();
+                    }
+                    else if (EscolhaUsuario == "2")
+                    {
+                        Loop = false;
+                        PedirUsuario();
+                    }
                 }
                 catch (FormatException)
                 {

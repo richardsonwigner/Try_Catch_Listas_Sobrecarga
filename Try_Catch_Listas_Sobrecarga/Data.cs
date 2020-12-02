@@ -84,7 +84,7 @@ namespace Try_Catch_Listas_Sobrecarga
         public void DiminuirUmDia(int diaEscolhido)
         {
             Data diaescolhido = datas.Find(number => number.dia == diaEscolhido);
-            diaescolhido.dia += 1;
+            diaescolhido.dia -= 1;
         }
         public override string ToString()
         {

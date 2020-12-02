@@ -78,19 +78,13 @@ namespace Try_Catch_Listas_Sobrecarga
         }
         public void AumentarUmDia(int diaEscolhido)
         {
-            foreach(Data i in datas)
-                if(i.dia == diaEscolhido)
-                {
-                   i.dia += 1;                
-                }
+            Data diaescolhido = datas.Find(number => number.dia == diaEscolhido);
+            diaescolhido.dia += 1;
         }
         public void DiminuirUmDia(int diaEscolhido)
         {
-            foreach (Data i in Datas)
-                if (i.dia == diaEscolhido)
-                {
-                    i.dia -= 1;                  
-                }
+            Data diaescolhido = datas.Find(number => number.dia == diaEscolhido);
+            diaescolhido.dia += 1;
         }
         public override string ToString()
         {
